@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+// 求一个数含有几个关键词
+int get_count(int num, int index) {
+    int total = 0;
+    while (num > 0) {
+        total = total +( num %10== index);
+        num /= 10;
+    }
+    return total;
+}
+
+// 求范围内含有几个关键词
+int count_group(int min, int max, int index) {
+    int count = 0;
+    for (int i = min; i <= max; i++) {
+        count = count + get_count(i, index);
+    }
+    return count;
+}
+
+int main() {
+    printf("%d\n", count_group(1, 100, 9));
+    return 0;
+}
+
