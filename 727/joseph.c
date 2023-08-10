@@ -35,7 +35,7 @@ void insert_node(node *p)
 
     }else
     {
-        p->next = tail->next;
+        
         tail->next = p;
     }
    
