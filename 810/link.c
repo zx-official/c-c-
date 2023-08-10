@@ -220,7 +220,7 @@ linknode *find_intersect_node(linknode *l1,linknode *l2)
     }
     return NULL;
     
-
+}
 int main(int argc, char const *argv[])
 {
     
