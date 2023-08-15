@@ -5,7 +5,7 @@ typedef struct t_node {
     struct t_node *lchild, *rchild;
 } t_node, *t_node_ptr;
 
-t_node_ptr root = NULL;
+t_node *root =NULL;
 
 t_node_ptr mk_t_node(int data) {
     t_node_ptr new_node = (t_node_ptr)malloc(sizeof(t_node));
