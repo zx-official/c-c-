@@ -71,8 +71,9 @@ void insert_node_n(int item)
         {
             free_node(p);
             return ; 
-        }
+        }     
         
+    }
         if (parent->data > p->data)
         {
             parent->left = p;
@@ -81,7 +82,6 @@ void insert_node_n(int item)
             parent->right = p;
 
         }
-    }
 }
 
 //递归插入
@@ -120,6 +120,7 @@ void insert_node(int data)
     }else 
     {
         insert_node_r(root,p);
+
     }
         
 }
@@ -304,12 +305,131 @@ void level_order_traverse()
             queue[rear++] = p->right;
         }
         
+    }
+}
 
+void del_node(int value)
+{
+    node *p = root;
+    if (root->data == value)
+    {
+        p = p->left;
+        while (p->right != NULL)
+        {
+            p = p->right;
+        }
+        root->data =p->data;
+        free_node(p);
+    }else 
+    {
+        node *del = search_node(root,value);
+        if (del->left == NULL &&del->right == NULL)
+        {
+            free_node(del);
+        }else if (del->left == NULL || del->right == NULL)
+        {
+
+        }
     }
     
     
+}
+void del_node2(int value)
+{
+    node *p;
+    node *parent;
+    node *del = search_node(root,value);
+    if (del == NULL)
+    {
+        printf("node not found! \n");
+        return ; 
+    }
+    //找到父节点
+    p = root;
+    while (p != NULL && p != del)
+    {
+        parent = p;
+        if (p->data > value)
+        {
+            p = p->left;
+        }else 
+        {
+            p = p->right;
+        }
+    }
+        // no child
+        if (del->left ==NULL && del->right == NULL) 
+        {
+            //tree only has one node 
+            if (parent == NULL)
+            {
+                root = NULL;
+            }else if (parent->left = del)
+            {
+                parent->left = NULL;
+            }else 
+            {
+                parent->right = NULL;
+            }
+            free_node(del);   
+        }
+        // has one child 
+        else if (del->left == NULL && del->right != NULL)
+        {
+            if (parent == NULL)
+            {
+                root = del->right;
+            }else if (parent->left == del)
+            {
+                parent->left = del->right;
+            }else 
+            {
+                parent->right = del->right;
+            }
+            free(del);          
+        }
+        else if(del->left != NULL && del->right == NULL)
+        {
+            if(parent == NULL)
+            {
+                root = del->left;
 
+            }else if (parent->left == del)
+            {
+                parent->left = del->left;
+            }else 
+            {
+                parent->right = del->right;
+            }
+            free_node(del);
+        }
+        else 
+        {
+                        // 找到右子树中的最小节点（后继节点）
+            node *successor_parent = del; // 记录后继节点的父节点
+            node *successor = del->right; // 后继节点初始值为右子节点
 
+            while (successor->left != NULL) // 在右子树中沿着左侧一直查找到最左节点
+            {
+                successor_parent = successor; // 更新后继节点的父节点
+                successor = successor->left;  // 继续向左子树查找
+            }
+
+            // 替换节点值
+            del->data = successor->data;
+
+            // 递归删除后继节点
+            if (successor_parent == del) // 如果后继节点的父节点是删除节点，说明后继节点是右子树的最左节点
+            {
+                del->right = successor->right; // 直接将删除节点的右子树指向后继节点的右子树
+            }
+            else
+            {
+                successor_parent->left = successor->right; // 否则，将后继节点的父节点的左子树指向后继节点的右子树
+            }
+            free(successor); // 释放后继节点的内存
+        }
+               
 }
 
 int main(int argc, char const *argv[])
@@ -343,18 +463,21 @@ int main(int argc, char const *argv[])
     insert_node(9);
     insert_node(20);
 #endif
-    pre_order_traverse();
-    printf("\n");
+    // pre_order_traverse();
+    // printf("\n");
 
-    my_pre_order();
-    printf("\n");
+    // my_pre_order();
+    // printf("\n");
 
-    my_in_order();
-    printf("\n");
+    // my_in_order();
+    // printf("\n");
 
-    post_order_traverse();
-    printf("\n");
+    // post_order_traverse();
+    // printf("\n");
 
+    level_order_traverse();
+    printf("\n");
+    del_node2(30);
     level_order_traverse();
     return 0;
 }
