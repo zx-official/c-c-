@@ -50,9 +50,10 @@ public:
 };
 int main(int argc, char const *argv[])
 {
-    Person *p = new Person[3];
-    p->disp();
-    delete [] p;
+    // Person *p = new Person[3];
+    // p->disp();
+    // delete [] p;
+    Person p;
     // Person *p2 = new Person("Alice",18);
     // p2->disp();
     //Person p1[3];
