@@ -60,7 +60,7 @@ MyString& MyString::operator= (const MyString &rhs)
 int MyString::assign(const char * a)
 {
     delete []m_data;
-    m_data = new char[strlen(a)];
+    m_data = new char[strlen(a)+1];
     strcpy(m_data,a);
     m_len = strlen(a);
     return m_len;
@@ -68,7 +68,7 @@ int MyString::assign(const char * a)
 int MyString::append(const char * add)
 {
     int len = m_len +strlen(add);
-    char temp[m_len];
+    char temp[m_len + 1];
     strcpy(temp,m_data);
     delete []m_data;
     m_data = new char[len];
