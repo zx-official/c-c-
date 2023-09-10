@@ -1,8 +1,18 @@
 # include <iostream>
+# include <ctime>
 using namespace std;
 class MyDate
 {
     public :
+    MyDate()
+    {
+        time_t now = time(0);
+        tm *localTime = localtime(&now);
+
+        hour = localTime->tm_hour;
+        min = localTime->tm_min;
+        sec = localTime->tm_sec;
+    }
     MyDate(int H,int M,int S)
     {
         hour = H;
@@ -76,16 +86,20 @@ class MyDate
 };
 int main(int argc, char const *argv[])
 {
-    MyDate cur(14,50,12);
-    cur.formate_print();
+    MyDate cur;
     cur.print();
-    MyDate temp(2,50,12);
-    temp.formate_print();
-    temp.print();
-    ++temp;
-    temp.print();
-    MyDate result = temp +cur;
-    result.print();
+    cur.formate_print();
+
+    // MyDate cur(14,50,12);
+    // cur.formate_print();
+    // cur.print();
+    // MyDate temp(2,50,12);
+    // temp.formate_print();
+    // temp.print();
+    // ++temp;
+    // temp.print();
+    // MyDate result = temp +cur;
+    // result.print();
 
     return 0;
 }
