@@ -1,0 +1,10 @@
+1.txt
+a.out
+getennv.c
+shell
+shell.c
+1.txt
+a.out
+getennv.c
+shell
+shell.c
