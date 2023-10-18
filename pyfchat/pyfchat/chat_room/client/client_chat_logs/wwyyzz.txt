@@ -1,0 +1,17 @@
+
+send (group) 23:20:40
+	to pyfadmin 
+	
+
+send (group) 23:21:03
+	to pyfadmin 
+	你是吗
+
+receive (group) 23:21:37
+	from pyfadmin / hello
+
+receive (group) 23:21:45
+	from pyfadmin / 你
+
+receive (group) 23:22:00
+	from pyfadmin / 你是sb

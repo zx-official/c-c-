@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/zyt/ex3/731",
-      "program": "/home/zyt/ex3/731/build/Debug/outDebug",
+      "cwd": "/home/zyt/ex3/pyfchat/pyfchat/chat_room/client",
+      "program": "/home/zyt/ex3/pyfchat/pyfchat/chat_room/client/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
